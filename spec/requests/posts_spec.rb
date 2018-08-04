@@ -1,7 +1,7 @@
 # spec/requests/posts_spec.rb
 require 'rails_helper'
 
-Rspec.describe 'Post API', type: :request do
+RSpec.describe 'Post API', type: :request do
   # initialize test data
   let!(:posts) { create_list(:post, 10) }
   let(:post_id) { posts.first.id }
