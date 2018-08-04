@@ -4,9 +4,6 @@ namespace :github do
     sh %{ git add -A }
     sh %{ git commit -m "#{args.message}" }
     sh %{ git push }
-  #  sh %( git add )
- #   sh %( git commit -m "#{args.message}" )
-#    sh %( git push )
   end
 
 end
