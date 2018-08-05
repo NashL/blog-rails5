@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/requests/posts_spec.rb
 require 'rails_helper'
 
@@ -106,5 +108,4 @@ RSpec.describe 'Post API', type: :request do
       expect(response).to have_http_status(204)
     end
   end
-
 end

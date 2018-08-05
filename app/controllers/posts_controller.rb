@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show update destroy]
 
@@ -7,15 +9,15 @@ class PostsController < ApplicationController
     json_response @posts
   end
 
+  # GET /posts/:id
+  def show
+    json_response(@post)
+  end
+
   # POST /posts
   def create
     @post = Post.create!(post_params)
     json_response(@post, :created)
-  end
-
-  # GET /posts/:id
-  def show
-    json_response(@post)
   end
 
   # PUT /posts/:id
@@ -39,5 +41,4 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find params[:id]
   end
-
 end

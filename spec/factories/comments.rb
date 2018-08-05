@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/factories/comments.rb
 FactoryBot.define do
   factory :comment do
