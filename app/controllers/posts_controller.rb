@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   # PUT /posts/:id
   def update
-    @post.update(:post_params)
+    @post.update!(post_params)
     head :no_content
   end
 

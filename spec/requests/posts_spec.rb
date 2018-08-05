@@ -68,7 +68,7 @@ RSpec.describe 'Post API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/posts', params: { title: 'Foobar' } }
+      before { post '/posts', params: { post: { title: 'Foobar' } } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -83,7 +83,7 @@ RSpec.describe 'Post API', type: :request do
 
   # Test suite for PUT /posts/:id
   describe 'PUT /posts/:id' do
-    let(:valid_attributes) { { title: 'Shopping' } }
+    let(:valid_attributes) { { post: { title: 'Learn Elm', content: 'asdasdasd' } } }
 
     context 'when the record exists' do
       before { put "/posts/#{post_id}", params: valid_attributes }
