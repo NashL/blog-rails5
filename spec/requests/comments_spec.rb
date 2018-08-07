@@ -72,13 +72,13 @@ RSpec.describe 'Comments API' do
     end
 
     context 'when an invalid request by invalid params' do
-      before { post "/posts/#{post_id}/comments", params: { comment: { name: 'Hello'} } }
+      before { post "/posts/#{post_id}/comments", params: { comment: {foo: 'bar'} } }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a failure message' do
-        expect(response.body).to match(/Validation failed:/)
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
     end
   end

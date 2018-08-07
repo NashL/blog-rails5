@@ -69,7 +69,7 @@ RSpec.describe 'Post API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/posts', params: { post: { title: 'Foobar' } } }
+      before { post '/posts', params: { post: { foo: 'bar' } } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -77,7 +77,7 @@ RSpec.describe 'Post API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Content can't be blank/)
+          .to match(/Validation failed: Title can't be blank/)
       end
     end
   end
