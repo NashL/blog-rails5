@@ -10,11 +10,9 @@ RSpec.describe 'Post API', type: :request do
 
   # Test suite for GET /posts
   describe 'GET /posts' do
-    # make HTTP get request before each example
     before { get '/posts' }
 
     it 'returns posts' do
-      # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
     end

@@ -12,5 +12,13 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid do |e|
       json_response({ message: e.message }, :unprocessable_entity)
     end
+
+    rescue_from ActiveRecord::RecordNotUnique do |e|
+      if e.message.match? /unique.*constraint.*index_users_on_email/
+        json_response({ message: 'Email already exists' }, :unprocessable_entity)
+      else
+        json_response({ message: e.message }, :unprocessable_entity)
+      end
+    end
   end
 end
