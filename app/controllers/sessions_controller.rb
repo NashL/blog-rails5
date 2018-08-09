@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# app/controllers/sessions_controllers.rb
 class SessionsController < Devise::SessionsController
-  respond_to :json
+  include Response
 
   private
 
   def respond_with(resource, _opts = {})
-    render json: resource
+    json_response(resource)
   end
 
   def respond_to_on_destroy

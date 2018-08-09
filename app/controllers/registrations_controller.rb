@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
+# app/controllers/registrations_controller.rb
 class RegistrationsController < Devise::RegistrationsController
   include Response
   include ExceptionHandler
-
-  # respond_to :json
 
   def create
     build_resource(sign_up_params)

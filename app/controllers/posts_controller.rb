@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+# app/controllers/posts_controllers.rb
 class PostsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_post, only: %i[show update destroy]
 
   # GET /posts
