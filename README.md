@@ -1,11 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Example of Rails 5 API with Devise and jwt-token running along with other models.
+Rspec used for testing.
 
 Things you may want to cover:
 
 * Ruby version
+  2.5.0
+* Rails version
+  5.2
 
 * System dependencies
 
