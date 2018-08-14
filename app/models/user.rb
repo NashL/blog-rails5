@@ -3,4 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
+
+  validates_presence_of :email, :password
 end

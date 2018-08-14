@@ -10,7 +10,7 @@ RSpec.describe 'Comments API' do
   let(:comment_id) { comments.first.id }
 
   describe 'GET posts/:post_id/comments' do
-    before { get "/posts/#{post_id}/comments" }
+    before { get "/posts/#{post_id}/comments", headers: valid_auth_headers }
 
     context 'when post exists' do
       it 'returns status code 200' do
@@ -36,7 +36,7 @@ RSpec.describe 'Comments API' do
   end
 
   describe 'GET /posts/:post_id/comments/:comment_id' do
-    before { get "/posts/#{post_id}/comments/#{comment_id}" }
+    before { get "/posts/#{post_id}/comments/#{comment_id}", headers: valid_auth_headers }
 
     context 'when post comment exists' do
       it 'returns status code 200' do
@@ -64,7 +64,7 @@ RSpec.describe 'Comments API' do
     let(:valid_attributes) { { comment: { name: 'name at update', description: 'Description at Update'} } }
 
     context 'when request attributes are valid' do
-      before { post "/posts/#{post_id}/comments", params: valid_attributes }
+      before { post "/posts/#{post_id}/comments", params: valid_attributes, headers: valid_auth_headers }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -72,7 +72,7 @@ RSpec.describe 'Comments API' do
     end
 
     context 'when an invalid request by invalid params' do
-      before { post "/posts/#{post_id}/comments", params: { comment: {foo: 'bar'} } }
+      before { post "/posts/#{post_id}/comments", params: { comment: {foo: 'bar'} }, headers: valid_auth_headers }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
@@ -86,7 +86,7 @@ RSpec.describe 'Comments API' do
   describe 'PUT /posts/:post_id/comments/:comment_id' do
     let(:valid_attributes) { { comment: { name: 'name at update', description: 'Description at Update'} } }
 
-    before { put "/posts/#{post_id}/comments/#{comment_id}", params: valid_attributes}
+    before { put "/posts/#{post_id}/comments/#{comment_id}", params: valid_attributes, headers: valid_auth_headers}
 
     context 'when comment exists' do
       it 'returns status code 204' do
@@ -112,7 +112,7 @@ RSpec.describe 'Comments API' do
   end
 
   describe 'DELETE /posts/:post_id/comments/:comment_id' do
-    before { delete "/posts/#{post_id}/comments/#{comment_id}" }
+    before { delete "/posts/#{post_id}/comments/#{comment_id}", headers: valid_auth_headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

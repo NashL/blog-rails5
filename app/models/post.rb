@@ -2,7 +2,7 @@
 
 # app/models/post.rb
 class Post < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :delete_all
 
   validates_presence_of :title, :content
 end
